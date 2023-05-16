@@ -1,0 +1,402 @@
+/*
+ * Inhaltsverzeichnis
+ *  1. Variables
+ *	2. Resets
+ *	3. Main Style
+ *	4. Media Query
+ *
+ */
+
+/* ========================= */
+/* 1. Variables */
+/* ------------------------- */
+:root {
+	/* #=#=#=#=#=# Generals #=#=#=#=#=# */
+	font-size: 10px;
+
+	--pagewidth: 650px;
+
+	/* #=#=#=#=#=# Colors #=#=#=#=#=# */
+	--color-text-light: #fff;
+	--color-text-dark: #404040;
+	--color-text-placeholder: #bebebe;
+
+	--color-background: #161419;
+	--color-foreground: #fff;
+
+
+		/* HSL */
+	--h: 203;
+	--primary: hsl(var(--h), 79%, 25%);
+	--primary-hover: hsl(var(--h), 50%, 35%);
+	--primary-dark:  hsl(var(--h), 79%, 15%);
+	--primary-light: hsl(var(--h), 79%, 25%);
+
+	/* #=#=#=#=#=# Spacings #=#=#=#=#=# */
+	--space-xs: 15px;
+	--space-s: 25px;
+	--space-m: 35px;
+	--space-l: 50px;
+	--space-xl: 75px;
+	--space-xxl: 115px;
+
+	/* #=#=#=#=#=# Border #=#=#=#=#=# */
+	--border-color: var(--primary-dark);
+	--border-width: 2px;
+	--border-radius: 1rem;
+
+	/* #=#=#=#=#=# Font #=#=#=#=#=# */
+	--text-m: 18px;
+
+	--font-text: 'Calibiri', sans-serif;
+	--font-text-weight: 400;
+
+	--line-height-s: 1.2;
+	--line-height-m: 1.6;
+
+	/* #=#=#=#=#=# Transition #=#=#=#=#=# */
+	--transition: 0.3s ease-in-out;
+}
+
+
+/* ========================= */
+/* 2. Resets */
+/* ------------------------- */
+
+:where(*, *::before, *::after) {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+
+	outline: none;
+	outline-offset: none;
+}
+
+/* Block Elemtents */
+header, main, footer, ul, ol, article, section, aside {
+	display: block;
+}
+
+/* Body */
+body {
+	font-family: var(--font-text);
+	font-weight: var(--font-text-weight);
+	font-size: var(--text-m);
+	line-height: var(--line-height-m);
+	min-height: 100vh;
+	background-color: var(--color-background);
+}
+
+/* Images */
+picture {
+	display: contents;
+}
+
+img, svg {
+	display: block;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.image-ctn :is(img, svg) {
+	width: 100%;
+}
+
+/* Buttons */
+a, button {
+	font-size: inherit;
+	font-family: inherit;
+	text-decoration: none;
+	cursor: pointer;
+	transition: var(--transition);
+	border: none;
+	box-shadow: unset;
+}
+
+
+/* ========================= */
+/* 3. Main Style */
+/* ------------------------- */
+	/* #=#=#=#=#=# Body #=#=#=#=#=# */
+body {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+@media screen and (min-width: 600px) {
+	/* Main */
+	main {
+		align-self: center;
+		max-width: var(--pagewidth);
+		width: 100%;
+		margin: var(--space-s);
+		height: calc(var(--pagewidth) / 600 * 385);
+	}
+
+
+	/* #=#=#=#=#=# Main Wrapper #=#=#=#=#=# */
+	#wrapper {
+		display: grid;
+		grid-template-columns: minmax(240px, 1fr) 2fr;
+		grid-template-rows: 1fr max-content;
+		column-gap: var(--space-s);
+		row-gap: var(--space-s);
+	
+		height: 100%;
+	}
+}
+
+#accesspoint-wrap, #input-wrap, #button-wrap {
+	padding: var(--space-s);
+	background-color: var(--color-foreground);
+}
+
+
+	/* #=#=#=#=#=# Accesspoints #=#=#=#=#=# */
+@media screen and (min-width: 600px) {
+	#accesspoint-wrap {
+		grid-row: span 2;
+	
+		border-top-left-radius: var(--border-radius);
+		border-bottom-left-radius: var(--border-radius);
+	}
+}
+
+#accesspoint-wrap {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto;
+	grid-auto-rows: 1fr;
+	row-gap: var(--space-m);
+
+	border-top: var(--space-l) solid var(--primary-light);
+}
+
+
+#accesspoint-wrap > div {
+	grid-column: 1 / -1;
+}
+
+.scroll-overflow {
+	/* min-height: 100%; */
+	max-height: 100%;
+
+	width: calc(100% + (2 * var(--space-s))) !important;
+
+	padding-inline: var(--space-s);
+	margin-inline: calc(var(--space-s) * -1);
+
+	overflow-y: auto;
+	overflow-y: overlay;
+}
+
+#accesspoint-wrap li:not(:last-child) {
+	margin-bottom: 5px;
+}
+
+#svg-wrap {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+#svg-wrap > div {
+	max-width: 124px;
+	width: 100%;
+}
+
+#svg-wrap:only-child > div {
+	max-width: 190px;
+	width: 100%;
+}
+
+	/* Buttons */
+.access-button {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	column-gap: var(--space-xs);
+	width: 100%;
+	background-color: unset;
+	text-align: left;
+	padding: 2px;
+}
+
+.access-button:is(:hover, :focus-visible) {
+	color: var(--primary-hover);
+}
+
+	/* Icons */
+div.icons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	column-gap: 5px;
+}
+
+div.icons::before,
+div.icons::after {
+	display: block;
+	content: '\0A';
+
+}
+
+div.icons::before {
+	content: 'L';
+}
+
+div.icons::after {
+	content: 'C';
+}
+
+
+	/* #=#=#=#=#=# Formular #=#=#=#=#=# */
+#form-wrap,
+#form-wrap > form {
+	display: contents;
+}
+
+
+@media screen and (min-width: 600px) {
+	#input-wrap {
+		border-top-right-radius: var(--border-radius);
+		border-top: var(--space-l) solid var(--primary-light);
+	}
+
+	#button-wrap {
+		border-bottom-right-radius: var(--border-radius);
+	}
+}
+
+#button-wrap {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	column-gap: var(--space-xs);
+}
+
+
+	/* Inputs */
+#input-wrap {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+
+#input-wrap li:not(:last-child) {
+	margin-bottom: var(--space-xs)
+}
+
+#input-wrap > ul {
+	max-width: 100%;
+	width: 100%;
+}
+
+input {
+	width: 100%;
+	padding: 5px var(--space-xs);
+
+	border: 1px solid var(--primary);
+	font-size: var(--text-m);
+}
+
+input::placeholder {
+	color: var(--color-text-placeholder);
+}
+
+	/* Password */
+#password-input-ctn {
+	position: relative;
+	z-index: 10;
+}
+
+#password-input-ctn > input {
+	padding-right: var(--space-s);
+}
+
+#visibility {
+	position: absolute;
+	z-index: 5;
+	top: 50%;
+	right: 5px;
+	transform: translateY(-50%);
+
+	background-color: unset;
+}
+
+input[type="text"] + #visibility::after {
+	display: block;
+	content: '\25CE';
+}
+
+input[type="password"] + #visibility::after {
+	display: block;
+	content: '\25C9';
+}
+
+
+	/* Buttons */
+.button {
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px var(--space-xs);
+
+	width: 100%;
+
+	text-align: center;
+
+	color: var(--color-text-light);
+	background-color: var(--primary);
+
+	transition: var(--transition);
+	transition-property: background-color;
+}
+
+.button:is(:hover, :focus-visible) {
+	background-color: var(--primary-hover);
+}
+
+
+	/* #=#=#=#=#=# List #=#=#=#=#=# */
+ul {
+	list-style-type: none;
+}
+
+
+/* ========================= */
+/* 4. Media Query */
+/* ------------------------- */
+@media screen and (max-width: 599px) {
+	main {
+		height: max-content;
+		align-self: center;
+		margin: var(--space-s);
+
+		max-width: 100%;
+		width: 100%;
+	}
+
+	#wrapper {
+		display: flex;
+		flex-direction: column;
+		row-gap: var(--space-xs);
+	}
+
+	/* Edges */
+	#accesspoint-wrap {
+		border-top-left-radius: var(--border-radius);
+		border-top-right-radius: var(--border-radius);
+	}
+
+	#button-wrap {
+		border-bottom-left-radius: var(--border-radius);
+		border-bottom-right-radius: var(--border-radius);
+	}
+}

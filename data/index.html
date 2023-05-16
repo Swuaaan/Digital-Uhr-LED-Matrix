@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Netzwerke</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<main>
+		<div id="wrapper">
+			<div id="accesspoint-wrap">
+				<div id="svg-wrap">
+					<div>
+						<svg xmlns="http://www.w3.org/2000/svg" id="Ebene_2" viewBox="0 0 500 452.06">
+							<polygon fill="#91f2e5" points="219.03 300 109.51 190.49 0 300 109.51 409.51 158.97 360.06 203.25 404.34 203.25 452.06 218.25 452.06 218.25 398.13 169.57 349.45 219.03 300"/>
+							<polygon fill="#acb4ba" points="500 300 390.49 190.49 280.97 300 331.75 350.78 330.43 349.45 281.59 398.29 281.59 452.06 296.59 452.06 296.59 404.5 341.03 360.06 390.49 409.51 500 300"/>
+							<polygon fill="#91cdf2" points="359.51 109.51 250 0 140.49 109.51 242.5 211.53 242.5 452.06 257.5 452.06 257.5 211.53 359.51 109.51"/>
+							<g id="Plug" fill="#fff">
+								<path d="m377.11,253.24c0-3.84-3.12-6.96-6.96-6.96s-6.96,3.12-6.96,6.96v20.54h13.92v-20.54Z"/>
+								<path d="m417.23,253.24c0-3.84-3.12-6.96-6.96-6.96s-6.96,3.12-6.96,6.96v20.54h13.92v-20.54Z"/>
+								<path d="m351.23,280.25v13.1h6.64v11.37c0,11.44,13.22,28.28,26.13,28.28v20.72h12.97v-20.72c13.08,0,26.13-16.81,26.13-28.28v-11.37h6.64v-13.1h-78.52Z"/>
+							</g>
+							<polygon id="Bolt" fill="#fff" points="209.48 112.17 268.52 42.34 245.79 95.84 279.4 95.84 220.37 165.57 243.09 112.07 209.48 112.17"/>
+							<g id="Media">
+								<g id="Laptop">
+									<path fill="#ffffff59" d="m111.56,291.94c0-9.31,7.57-16.88,16.88-16.88h3.02v-9.37h-61.62v48.88h41.72v-22.64Z"/>
+									<path fill="#fff" d="m126.96,260.02h-52.05c-5.55,0-10.07,4.52-10.07,10.07v41.47h-11.25c0,6,4.86,10.86,10.86,10.86h47.1v-10.86h-40.17v-41.47c0-1.94,1.58-3.52,3.52-3.52h52.05c1.94,0,3.52,1.58,3.52,3.52v4.9h6.55v-4.9c0-5.55-4.52-10.07-10.07-10.07Z"/>
+								</g>
+								<g id="Phone">
+									<rect fill="#ffffff59" x="122.55" y="286.47" width="30.55" height="52.78"/>
+									<path id="Phone-2" fill="#fff" d="m147.42,342.72h-19.15c-5.88,0-10.66-4.78-10.66-10.66v-40.23c0-5.88,4.78-10.66,10.66-10.66h19.15c5.88,0,10.66,4.78,10.66,10.66v40.23c0,5.88-4.78,10.66-10.66,10.66Zm-19.15-55.01c-2.27,0-4.12,1.85-4.12,4.12v40.23c0,2.27,1.85,4.12,4.12,4.12h19.15c2.27,0,4.12-1.85,4.12-4.12v-40.23c0-2.27-1.85-4.12-4.12-4.12h-19.15Z"/>
+								</g>
+							</g>
+						</svg>
+					</div>
+				</div>
+			</div>
+			<div id="form-wrap">
+				<form method="POST" action="/">
+					<div id="input-wrap">
+						<ul>
+							<li>
+								<input type="text" id="ssid" name="ssid" placeholder="SSID">
+							</li>
+							<li>
+								<div id="password-input-ctn">
+									<input type="password" id="password" name="password" placeholder="Passwort">
+									<button type="button" id="visibility"></button>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div id="button-wrap">
+						<button id="button-send" class="button" type="submit"><span>Send</span></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</main>
+	<script>
+		window.addEventListener('DOMContentLoaded', () => {
+			// ==================================================
+			// Password Reveal
+			let type = 'password',
+				password_input = document.querySelector('input#password');
+
+			document.querySelector('#visibility').addEventListener('click', () => {
+				type = type === 'password'? 'text' : 'password';
+
+				password_input.setAttribute('type', type);
+			});
+		});
+	</script>
+</body>
+</html>
